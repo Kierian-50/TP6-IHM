@@ -3,6 +3,7 @@ package graphical;
 import utilities.TechnicalClass;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 
 /**
@@ -13,9 +14,9 @@ import java.awt.event.ActionEvent;
 public class Action {
 
     /**
-     * The button listener. It allows to say what happen if you click
-     * on the reset, start and stop buttons.
-     * It looks the selected mode thanks to the booleans.
+     * This method finds the selected button and calls the good
+     * method which will do the correct action thanks to the
+     * name of the button.
      * @param button The button.
      * @param buttonName The name of the button.
      */
@@ -32,7 +33,54 @@ public class Action {
                         TechnicalClass.createUser();
                         break;
 
+                    case "New training":
+                        TechnicalClass.createPageNewTraining();
+                        break;
+
+                    case "Switch button right":
+                        TechnicalClass.switchFrame("Right");
+                        break;
+
+                    case "Switch button left":
+                        TechnicalClass.switchFrame("Left");
+                        break;
+
+                    case "Emergency":
+                        TechnicalClass.emergencyAction();
+                        break;
+
+                    case "More meteo":
+                        TechnicalClass.actionMoreMeteo();
+                        break;
+
                     default:
+                        TechnicalClass.createPageError();
+                        break;
+                }
+            }
+        });
+    }
+
+    /**
+     * This method finds the selected button and calls the good
+     * method which will do the correct action thanks to the
+     * name of the button. Here we've the frame in parameter because
+     * I must delete the frame in parameter.
+     * @param button The button.
+     * @param buttonName The name of the button.
+     * @param frame The frame that you must delete.
+     */
+    public static void buttonListener(JButton button, String buttonName, Frame frame){ //déclaration de ta méthode
+        button.addActionListener(new java.awt.event.ActionListener(){ //tu mets en écoute le boutton
+            public void actionPerformed(ActionEvent e) {
+
+                switch (buttonName){
+                    case "Return":
+                        TechnicalClass.returnActionTraining(frame);
+                        break;
+
+                    default:
+                        TechnicalClass.createPageError();
                         break;
                 }
             }
