@@ -34,7 +34,7 @@ public class TechnicalClass {
 
         ArrayList<String> theFile = RWFile.readFile("data/BDDuser.txt");
 
-        boolean exist = isInFile(theFile,nameEnter,passwordEnter);
+        boolean exist = isInFile(theFile,passwordEnter,nameEnter);
 
         if(exist){
 
